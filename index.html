@@ -31,11 +31,15 @@
 
   <!-- Body -->
   <body>
-    <!-- container - needed for using bootstrap. using px-2 for a  -->
+    <!-- container - needed for using bootstrap. Used px-2 for a left and right padding-->
     <div class="container px-2">
+      <!-- start of the form -->
       <form id="weather-form">
+        <!-- first row - ps-3 is for left padding -->
         <div class="row ps-3">
+          <!-- first column. search bar resides here. pt-3 is a top padding (calculated from the borders of the form) -->
           <div class="col pt-3" id="search-block">
+            <!-- search bar -->
             <input
               type="text"
               name="text"
@@ -46,7 +50,9 @@
               autofocus="On"
             />
           </div>
+          <!-- End of first col, beginning of the second column. pt: padding-top, ps: padding-left, me: margin-right, pe: padding-right -->
           <div class="col pt-3 ps-3 me-1 pe-0">
+            <!-- Search button, which is blue. -->
             <input
               type="submit"
               value="Search"
@@ -54,21 +60,36 @@
               class="search-button"
             />
           </div>
+          <!-- End of second col, beginning of the third. ms: margin-left -->
           <div class="col pt-3 ms-1 ps-0">
+            <!-- The green button for showing the location -->
             <button class="current-location-button" id="current-loc">
               Current
             </button>
           </div>
+          <!-- End of third col, beginning of the fourth. col-sm: small column.
+            The column that holds time and date. Retrieves it based on the user's time zone,
+            Although better to use navigator object is js to retrieve time and date based on
+            user's timezone. -->
           <div class="col-sm time-date pe-2">
             <span class="day"></span>,<br />
             <span class="month"></span>
             <span class="date"></span>th,<br />
             <span class="hour"></span>:<span class="minute"></span>🌙<br />
+            <!-- For changes between fahrenheit(imperial) and celsius(metric) systems -->
             <a class="degree-change" id="celsius" href="#">°C</a> |
             <a class="degree-change" id="fahrenheit" href="#">°F</a>
           </div>
+          <!-- End of fourth col -->
         </div>
+        <!-- Beginning of the Second row -->
         <div class="row pt-5 ps-5">
+          <!-- Beginning of the first column. lh: line-height
+            It fetches live data from my own location by default.
+            col-6: a row in bootstrap is 12 blocks of a table. col-6 is a
+            column of 6 blocks, meaning it takes half the row. 
+            Holds a general description of the location's weather plus
+            its name. -->
           <div class="col-6 pt-3 ps-4 lh-1 text-center">
             <span class="city-name"></span>
             <br />
@@ -79,6 +100,9 @@
               <span id="weather-status">Clear</span>
             </span>
           </div>
+          <!-- End of first col, beginning of the second.
+            lh-base: normal line-height. Holds more details from the location's
+            weather. -->
           <div class="col-6 lh-base pt-4 pe-5 more-weathercast-details">
             Max. temperature: <span class="temp">34</span> °<span class="degree"
               >C</span
@@ -89,10 +113,17 @@
             Precipitation: 7%<br />
             Wind speed: 4 km/h
           </div>
+          <!-- End of the second col -->
         </div>
+        <!-- End of the second row, beginning of the third. This row is merely for creating a space
+          between the current weather information of the location and the weather forecast (will be added later). -->
         <div class="row pt-5"></div>
+        <!-- End of the third row -->
       </form>
+      <!-- End of the form -->
     </div>
+    <!-- End of the container -->
+    <!-- link to custom script -->
     <script src="src/app.js"></script>
   </body>
 </html>
