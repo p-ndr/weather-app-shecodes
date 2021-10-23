@@ -1,0 +1,86 @@
+form {
+  display: block;
+  margin: 0 auto;
+  margin-top: 50px;
+  border: 1px solid #5a6275;
+  padding-top: 15px;
+  border-radius: 10px;
+  opacity: 0.85;
+}
+
+.city-search-bar {
+  width: 400px;
+  height: 50px;
+  border-radius: 25px;
+  border: 1px solid #5a6275;
+  padding-left: 15px;
+  opacity: 0.8;
+}
+
+.search-button {
+  padding: 12px 24px;
+  border-radius: 25px;
+  border: 1px solid #0069d9;
+  transition: all 200ms ease-in-out;
+}
+.search-button:hover {
+  color: #fff;
+  background-color: #0069d9;
+  cursor: pointer;
+}
+
+.current-location-button {
+  padding: 12px 24px;
+  border-radius: 25px;
+  border: 1px solid #9de16f;
+  transition: all 200ms ease-in-out;
+}
+.current-location-button:hover {
+  color: #fff;
+  background-color: #9de16f;
+  cursor: pointer;
+}
+
+.time-date {
+  opacity: 0.85;
+  font-size: 14;
+}
+
+.city-name {
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 70px;
+  color: #5a6275;
+  opacity: 1;
+}
+.brief-temp-details {
+  font-family: "Roboto", sans-serif;
+  font-size: 40px;
+  color: #5a6275;
+}
+.degree-change {
+  text-decoration: none;
+  transition: all 200ms ease-in-out;
+  color: #005781;
+}
+.degree-change:hover {
+  font-weight: bold;
+  font-size: 18px;
+  opacity: 1;
+  cursor: pointer;
+}
+.r2-c1-linspace {
+  line-height: 0.5;
+}
+.more-weathercast-details {
+  font-family: "Roboto", sans-serif;
+  font-size: 19px;
+  color: #5a6275;
+}
+
+.forecast {
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  color: #5a6275;
+  opacity: 1;
+}
