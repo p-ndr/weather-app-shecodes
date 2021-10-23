@@ -32,12 +32,13 @@ form {
 .current-location-button {
   padding: 12px 24px;
   border-radius: 25px;
-  border: 1px solid #9de16f;
+  border: 1px solid #28a745;
   transition: all 200ms ease-in-out;
 }
 .current-location-button:hover {
   color: #fff;
-  background-color: #9de16f;
+  background-color: #28a745;
+  border: 1px solid #28a745;
   cursor: pointer;
 }
 
