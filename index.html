@@ -32,7 +32,7 @@
   <!-- Body -->
   <body>
     <!-- container - needed for using bootstrap. Used px-2 for a left and right padding-->
-    <div class="container px-2">
+    <div class="container px-2" style="width: 840px">
       <!-- start of the form -->
       <form id="weather-form">
         <!-- first row - ps-3 is for left padding -->
@@ -74,8 +74,9 @@
           <div class="col-sm time-date pe-2">
             <span class="day"></span>,<br />
             <span class="month"></span>
-            <span class="date"></span>th,<br />
-            <span class="hour"></span>:<span class="minute"></span>🌙<br />
+            <span class="date"></span>,<br />
+            <span class="hour"></span>:<span class="minute"></span>
+            <span class="daylight-emoji">🌙</span><br />
             <!-- For changes between fahrenheit(imperial) and celsius(metric) systems -->
             <a class="degree-change" id="celsius" href="#">°C</a> |
             <a class="degree-change" id="fahrenheit" href="#">°F</a>
@@ -104,14 +105,16 @@
             lh-base: normal line-height. Holds more details from the location's
             weather. -->
           <div class="col-6 lh-base pt-4 pe-5 more-weathercast-details">
-            Max. temperature: <span class="temp">34</span> °<span class="degree"
+            Max. temperature: <span class="temp" id="max-temp"></span> °<span
+              class="degree"
               >C</span
             ><br />
-            Min. Temperature: <span class="temp">13</span> °<span class="degree"
+            Min. Temperature: <span class="temp" id="min-temp"></span> °<span
+              class="degree"
               >C</span
             ><br />
-            Precipitation: 7%<br />
-            Wind speed: 4 km/h
+            Precipitation: <span id="precipitation"></span>%<br />
+            Wind speed: <span id="wind-speed"></span> km/h
           </div>
           <!-- End of the second col -->
         </div>
