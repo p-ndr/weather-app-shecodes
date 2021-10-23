@@ -59,7 +59,7 @@ function defaultWeatherInfo() {
     let weatherStat = document.getElementById("weather-status");
     let maxTemp = document.getElementById("max-temp");
     let minTemp = document.getElementById("min-temp");
-    let precipitation = document.getElementById("precipitation");
+    let humidity = document.getElementById("humidity");
     let windSpeed = document.getElementById("wind-speed");
 
     cityElement.innerHTML = response.data.name;
@@ -67,7 +67,7 @@ function defaultWeatherInfo() {
     weatherStat.innerHTML = response.data.weather[0].main;
     maxTemp.innerHTML = Math.round(response.data.main.temp_max);
     minTemp.innerHTML = Math.round(response.data.main.temp_min);
-    precipitation.innerHTML = response.data.main.humidity;
+    humidity.innerHTML = response.data.main.humidity;
     windSpeed.innerHTML = response.data.wind.speed;
   });
 }
