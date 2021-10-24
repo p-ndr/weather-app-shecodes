@@ -62,6 +62,7 @@ let city = "Tehran";
 function defaultWeatherInfo() {
   let defaultWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${metric}`;
   axios.get(defaultWeather).then(function (response) {
+    let icon = document.getElementById("weather-icon");
     let cityElement = document.querySelector(".city-name");
     let cityTemp = document.getElementById("avg-temp");
     let weatherStat = document.getElementById("weather-status");
@@ -69,8 +70,11 @@ function defaultWeatherInfo() {
     let minTemp = document.getElementById("min-temp");
     let humidity = document.getElementById("humidity");
     let windSpeed = document.getElementById("wind-speed");
-
     setDateTime(response.data.dt);
+    icon.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
     cityElement.innerHTML = response.data.name;
     cityTemp.innerHTML = Math.round(response.data.main.temp);
     weatherStat.innerHTML = response.data.weather[0].description;
@@ -91,6 +95,7 @@ function retrieveWeatherInfo(event) {
   city = city.value;
   let weatherAPIMetric = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${metric}`;
   axios.get(weatherAPIMetric).then(function (response) {
+    let icon = document.getElementById("weather-icon");
     let currentCity = document.querySelector(".city-name");
     let currentTemp = document.getElementById("avg-temp");
     let currentWeatherStat = document.getElementById("weather-status");
@@ -100,6 +105,10 @@ function retrieveWeatherInfo(event) {
     let windSpeed = document.getElementById("wind-speed");
 
     setDateTime(response.data.dt);
+    icon.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
     currentCity.innerHTML = city;
     currentTemp.innerHTML = Math.round(response.data.main.temp);
     currentWeatherStat.innerHTML = response.data.weather[0].description;
@@ -119,6 +128,7 @@ function showCurrentLocationInfo(event) {
   navigator.geolocation.getCurrentPosition(function (position) {
     let geoLocationAPIMetric = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=${metric}`;
     axios.get(geoLocationAPIMetric).then(function (response) {
+      let icon = document.getElementById("weather-icon");
       let currentCity = document.querySelector(".city-name");
       let avgTemp = document.getElementById("avg-temp");
       let currentWeatherStat = document.getElementById("weather-status");
@@ -127,6 +137,10 @@ function showCurrentLocationInfo(event) {
       let humidity = document.getElementById("humidity");
       let windSpeed = document.getElementById("wind-speed");
       setDateTime(response.data.dt);
+      icon.setAttribute(
+        "src",
+        `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+      );
       currentCity.innerHTML = response.data.name;
       avgTemp.innerHTML = Math.round(response.data.main.temp);
       currentWeatherStat.innerHTML = response.data.weather[0].description;
