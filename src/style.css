@@ -1,3 +1,6 @@
+body {
+  background-color: #f9f7fe;
+}
 .app-wrapper {
   display: block;
   margin: 30px auto;
@@ -8,17 +11,18 @@ form {
   display: block;
   margin: 0 auto;
   margin-top: 50px;
-  border: 1px solid #5a6275;
+  /* border: 0.1px solid #5a6275; */
   padding-top: 15px;
   border-radius: 10px;
-  opacity: 0.85;
+  background-color: #ffffff;
+  box-shadow: 0 30px 50px rgba(65, 50, 100, 0.08);
 }
 
 .city-search-bar {
   width: 400px;
   height: 50px;
   border-radius: 25px;
-  border: 1px solid #5a6275;
+  border: 1px solid #a5a5a5;
   padding-left: 15px;
   opacity: 0.8;
 }
@@ -26,30 +30,30 @@ form {
 .search-button {
   padding: 12px 24px;
   border-radius: 25px;
-  border: 1px solid #0069d9;
+  border: 1px solid #53afff;
   transition: all 200ms ease-in-out;
 }
 .search-button:hover {
   color: #fff;
-  background-color: #0069d9;
+  background-color: #53afff;
   cursor: pointer;
 }
 
 .current-location-button {
   padding: 12px 24px;
   border-radius: 25px;
-  border: 1px solid #28a745;
+  border: 1px solid #9de16f;
   transition: all 200ms ease-in-out;
 }
 .current-location-button:hover {
   color: #fff;
-  background-color: #28a745;
-  border: 1px solid #28a745;
+  background-color: #9de16f;
+  border: 1px solid #9de16f;
   cursor: pointer;
 }
 
 .time-date {
-  opacity: 0.85;
+  color: #a5a5a5;
   font-size: 14;
 }
 
@@ -62,18 +66,17 @@ form {
 }
 .brief-temp-details {
   font-family: "Roboto", sans-serif;
-  font-size: 35px;
+  font-size: 24px;
   color: #5a6275;
+  text-transform: capitalize;
 }
 .degree-change {
   text-decoration: none;
   transition: all 200ms ease-in-out;
-  color: #005781;
+  color: #53afff;
 }
 .degree-change:hover {
-  font-weight: bold;
-  font-size: 18px;
-  opacity: 1;
+  text-decoration: underline;
   cursor: pointer;
 }
 .r2-c1-linspace {
@@ -81,7 +84,7 @@ form {
 }
 .more-weathercast-details {
   font-family: "Roboto", sans-serif;
-  font-size: 19px;
+  font-size: 18px;
   color: #5a6275;
 }
 

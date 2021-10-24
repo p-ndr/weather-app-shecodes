@@ -31,7 +31,7 @@ function formatMonth(monthCode) {
   return months[monthCode];
 }
 
-function setDateTime(timespan, timezone) {
+function setDateTime(timespan) {
   let now = new Date(timespan * 1000); // transform to milliseconds
   let day = document.querySelector(".day");
   let month = document.querySelector(".month");
@@ -70,10 +70,10 @@ function defaultWeatherInfo() {
     let humidity = document.getElementById("humidity");
     let windSpeed = document.getElementById("wind-speed");
 
-    setDateTime(response.data.dt, response.data.timezone);
+    setDateTime(response.data.dt);
     cityElement.innerHTML = response.data.name;
     cityTemp.innerHTML = Math.round(response.data.main.temp);
-    weatherStat.innerHTML = response.data.weather[0].main;
+    weatherStat.innerHTML = response.data.weather[0].description;
     maxTemp.innerHTML = Math.round(response.data.main.temp_max);
     minTemp.innerHTML = Math.round(response.data.main.temp_min);
     humidity.innerHTML = response.data.main.humidity;
@@ -102,7 +102,7 @@ function retrieveWeatherInfo(event) {
     setDateTime(response.data.dt);
     currentCity.innerHTML = city;
     currentTemp.innerHTML = Math.round(response.data.main.temp);
-    currentWeatherStat.innerHTML = response.data.weather[0].main;
+    currentWeatherStat.innerHTML = response.data.weather[0].description;
     maxTemp.innerHTML = Math.round(response.data.main.temp_max);
     minTemp.innerHTML = Math.round(response.data.main.temp_min);
     humidity.innerHTML = response.data.main.humidity;
@@ -129,7 +129,7 @@ function showCurrentLocationInfo(event) {
       setDateTime(response.data.dt);
       currentCity.innerHTML = response.data.name;
       avgTemp.innerHTML = Math.round(response.data.main.temp);
-      currentWeatherStat.innerHTML = response.data.weather[0].main;
+      currentWeatherStat.innerHTML = response.data.weather[0].description;
       maxTemp.innerHTML = Math.round(response.data.main.temp_max);
       minTemp.innerHTML = Math.round(response.data.main.temp_min);
       humidity.innerHTML = response.data.main.humidity;
