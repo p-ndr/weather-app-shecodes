@@ -10,7 +10,7 @@ form {
   width: 840px;
   display: block;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 30px;
   padding-top: 15px;
   padding-left: 12px;
   border-radius: 10px;
@@ -90,13 +90,13 @@ form {
 
 .forecast {
   font-family: "Roboto", sans-serif;
-  font-size: 24px;
+  font-size: 20px;
   color: #5a6275;
   opacity: 1;
 }
 
 .temperature-block {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .max {
