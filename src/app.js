@@ -55,7 +55,6 @@ function setDateTime(timespan, timezone) {
 
 // getting the location
 
-let apiKey = "2405521babf79c19f0fb38e819429c5f";
 let metric = "metric";
 let city = "Tehran";
 
