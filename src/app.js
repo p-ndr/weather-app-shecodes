@@ -1,54 +1,63 @@
-// Section for retrieving live date. Better loaded from an API than new Date().
-let now = new Date();
+// Loading date from API.
+function formatDay(dayCode) {
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  return days[dayCode];
+}
 
-// Too many classes.
-let day = document.querySelector(".day");
-let month = document.querySelector(".month");
-let date = document.querySelector(".date");
-let hour = document.querySelector(".hour");
-let minute = document.querySelector(".minute");
-let daylight = document.querySelector(".daylight-emoji");
+function formatMonth(monthCode) {
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
+  return months[monthCode];
+}
 
-// display date.
-day.innerHTML = days[now.getDay()];
-month.innerHTML = months[now.getMonth()];
-date.innerHTML = now.getDate();
-hour.innerHTML = now.getHours();
-if (now.getMinutes() < 10) {
-  minute.innerHTML = `0${now.getMinutes()}`;
-} else {
-  minute.innerHTML = now.getMinutes();
+function setDateTime(timespan, timezone) {
+  let now = new Date(timespan * 1000); // transform to milliseconds
+  let day = document.querySelector(".day");
+  let month = document.querySelector(".month");
+  let date = document.querySelector(".date");
+  let hour = document.querySelector(".hour");
+  let minute = document.querySelector(".minute");
+  day.innerHTML = formatDay(now.getDay());
+  month.innerHTML = formatMonth(now.getMonth());
+  date.innerHTML = now.getDate();
+  if (minute < 10) {
+    minute.innerHTML = `0${now.getMinutes()}`;
+  } else {
+    minute.innerHTML = now.getMinutes();
+  }
+  if (hour < 10) {
+    hour.innerHTML = `0${now.getHours()}`;
+  } else {
+    hour.innerHTML = now.getHours();
+  }
 }
 
 // getting the location
 
 let apiKey = "2405521babf79c19f0fb38e819429c5f";
 let metric = "metric";
-let city = "Shiraz";
+let city = "Tehran";
 
 // default location is my own city.
 function defaultWeatherInfo() {
@@ -62,6 +71,7 @@ function defaultWeatherInfo() {
     let humidity = document.getElementById("humidity");
     let windSpeed = document.getElementById("wind-speed");
 
+    setDateTime(response.data.dt, response.data.timezone);
     cityElement.innerHTML = response.data.name;
     cityTemp.innerHTML = Math.round(response.data.main.temp);
     weatherStat.innerHTML = response.data.weather[0].main;
@@ -87,14 +97,16 @@ function retrieveWeatherInfo(event) {
     let currentWeatherStat = document.getElementById("weather-status");
     let maxTemp = document.getElementById("max-temp");
     let minTemp = document.getElementById("min-temp");
-    let precipitation = document.getElementById("precipitation");
+    let humidity = document.getElementById("humidity");
     let windSpeed = document.getElementById("wind-speed");
+
+    setDateTime(response.data.dt);
     currentCity.innerHTML = city;
     currentTemp.innerHTML = Math.round(response.data.main.temp);
     currentWeatherStat.innerHTML = response.data.weather[0].main;
     maxTemp.innerHTML = Math.round(response.data.main.temp_max);
     minTemp.innerHTML = Math.round(response.data.main.temp_min);
-    precipitation.innerHTML = response.data.main.humidity;
+    humidity.innerHTML = response.data.main.humidity;
     windSpeed.innerHTML = response.data.wind.speed;
   });
 }
@@ -113,14 +125,15 @@ function showCurrentLocationInfo(event) {
       let currentWeatherStat = document.getElementById("weather-status");
       let maxTemp = document.getElementById("max-temp");
       let minTemp = document.getElementById("min-temp");
-      let precipitation = document.getElementById("precipitation");
+      let humidity = document.getElementById("humidity");
       let windSpeed = document.getElementById("wind-speed");
+      setDateTime(response.data.dt);
       currentCity.innerHTML = response.data.name;
       avgTemp.innerHTML = Math.round(response.data.main.temp);
       currentWeatherStat.innerHTML = response.data.weather[0].main;
       maxTemp.innerHTML = Math.round(response.data.main.temp_max);
       minTemp.innerHTML = Math.round(response.data.main.temp_min);
-      precipitation.innerHTML = response.data.main.humidity;
+      humidity.innerHTML = response.data.main.humidity;
       windSpeed.innerHTML = response.data.wind.speed;
     });
   });

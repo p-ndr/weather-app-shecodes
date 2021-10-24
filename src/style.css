@@ -1,3 +1,8 @@
+.app-wrapper {
+  display: block;
+  margin: 30px auto;
+}
+
 form {
   width: 840px;
   display: block;
@@ -49,8 +54,8 @@ form {
 }
 
 .city-name {
-  text-align: left;
   font-family: "Roboto", sans-serif;
+  text-align: left;
   font-size: 55px;
   color: #5a6275;
   opacity: 1;
@@ -85,4 +90,20 @@ form {
   font-size: 24px;
   color: #5a6275;
   opacity: 1;
+}
+
+.developer-notes {
+  display: block;
+  margin-left: 380px;
+  font-family: monospace;
+  font-size: medium;
+  line-height: 3.5;
+  opacity: 0.8;
+}
+.github-link {
+  text-decoration: none;
+  transition: all 200ms ease-in-out;
+}
+.github-link:hover {
+  text-decoration: underline;
 }
