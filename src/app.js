@@ -58,6 +58,7 @@ let apiKey = "2405521babf79c19f0fb38e819429c5f";
 let metric = "metric";
 let city = "Tehran";
 
+//getting the forcast. used inside the functions, not separately.
 function getForecast(coords) {
   let latitude = coords.lat;
   let longitude = coords.lon;
@@ -194,6 +195,7 @@ function showCurrentLocationInfo(event) {
 let current = document.getElementById("current-loc");
 current.addEventListener("click", showCurrentLocationInfo);
 
+// changes the degrees from fahrenheit to celsius
 function changeDegreeToCelsius(event) {
   event.preventDefault();
   let temps = document.querySelectorAll(".temp");
@@ -212,6 +214,7 @@ function changeDegreeToCelsius(event) {
 let celsius = document.getElementById("celsius");
 celsius.addEventListener("click", changeDegreeToCelsius);
 
+// changes degree from celsius to fahrenheit
 function changeDegreeToFahrenheit(event) {
   event.preventDefault();
   let temps = document.querySelectorAll(".temp");
