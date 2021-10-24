@@ -1,5 +1,11 @@
 body {
-  background-color: #f9f7fe;
+  /* background-color: #f9f7fe; */
+  background: radial-gradient(
+      621px at 25.3% 13.8%,
+      rgb(255, 255, 255) 0%,
+      rgb(234, 236, 255) 90%
+    )
+    fixed;
 }
 .app-wrapper {
   display: block;
@@ -11,7 +17,6 @@ form {
   display: block;
   margin: 0 auto;
   margin-top: 50px;
-  /* border: 0.1px solid #5a6275; */
   padding-top: 15px;
   padding-left: 12px;
   border-radius: 10px;
@@ -94,6 +99,18 @@ form {
   font-size: 24px;
   color: #5a6275;
   opacity: 1;
+}
+
+.temperature-block {
+  font-size: 18px;
+}
+
+.max {
+  font-weight: bold;
+}
+
+.min {
+  color: #a5a5a5;
 }
 
 small {
