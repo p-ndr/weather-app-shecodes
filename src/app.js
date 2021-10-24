@@ -154,3 +154,40 @@ function showCurrentLocationInfo(event) {
 // adds event to the current location button.
 let current = document.getElementById("current-loc");
 current.addEventListener("click", showCurrentLocationInfo);
+
+function changeDegreeToCelsius(event) {
+  event.preventDefault();
+  let temps = document.querySelectorAll(".temp");
+  let degrees = document.querySelectorAll(".degree");
+  if (degrees[0].innerHTML === "F") {
+    degrees.forEach((element) => {
+      element.innerHTML = "C";
+    });
+    temps.forEach((element) => {
+      let num = Number(element.innerHTML);
+      let degCel = Math.round(((num - 32) * 5) / 9);
+      element.innerHTML = degCel;
+    });
+  }
+}
+let celsius = document.getElementById("celsius");
+celsius.addEventListener("click", changeDegreeToCelsius);
+
+function changeDegreeToFahrenheit(event) {
+  event.preventDefault();
+  let temps = document.querySelectorAll(".temp");
+  let degrees = document.querySelectorAll(".degree");
+
+  if (degrees[0].innerHTML === "C") {
+    degrees.forEach((element) => {
+      element.innerHTML = "F";
+    });
+    temps.forEach((element) => {
+      let num = Number(element.innerHTML);
+      let degFahr = Math.round(1.8 * num + 32);
+      element.innerHTML = degFahr;
+    });
+  }
+}
+let fahrenheit = document.getElementById("fahrenheit");
+fahrenheit.addEventListener("click", changeDegreeToFahrenheit);

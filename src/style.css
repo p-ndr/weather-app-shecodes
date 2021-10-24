@@ -3,7 +3,7 @@ body {
 }
 .app-wrapper {
   display: block;
-  margin: 30px auto;
+  margin: 0px auto;
 }
 
 form {
@@ -13,6 +13,7 @@ form {
   margin-top: 50px;
   /* border: 0.1px solid #5a6275; */
   padding-top: 15px;
+  padding-left: 12px;
   border-radius: 10px;
   background-color: #ffffff;
   box-shadow: 0 30px 50px rgba(65, 50, 100, 0.08);
@@ -23,7 +24,7 @@ form {
   height: 50px;
   border-radius: 25px;
   border: 1px solid #a5a5a5;
-  padding-left: 15px;
+  padding-left: 18px;
   opacity: 0.8;
 }
 
@@ -95,9 +96,9 @@ form {
   opacity: 1;
 }
 
-.developer-notes {
+small {
   display: block;
-  margin-left: 380px;
+  margin-left: 420px;
   font-family: monospace;
   font-size: medium;
   line-height: 3.5;
