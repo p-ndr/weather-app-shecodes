@@ -58,6 +58,42 @@ let apiKey = "2405521babf79c19f0fb38e819429c5f";
 let metric = "metric";
 let city = "Tehran";
 
+function getForecast(coords) {
+  let latitude = coords.lat;
+  let longitude = coords.lon;
+  let callApiForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=currently,hourly,minutely,alerts&appid=${apiKey}&units=${metric}`;
+
+  axios.get(callApiForecast).then(function (response) {
+    let forecasts = document.querySelectorAll(".forecast");
+    let dailyForecast = response.data.daily;
+    var counter = 1;
+    forecasts.forEach((element) => {
+      element.innerHTML = `${formatDay(
+        new Date(dailyForecast[counter].dt * 1000).getDay()
+      )}
+      <br />
+      <img src="http://openweathermap.org/img/wn/${
+        dailyForecast[counter].weather[0].icon
+      }@2x.png"/>
+      <br />
+      <span class="temperature-block">
+        <span class="max">
+          <span class="temp">${Math.round(
+            dailyForecast[counter].temp.max
+          )}</span> °<span class="degree">C</span>
+        </span>
+        &emsp;
+        <span class="min">
+          <span class="temp">${Math.round(
+            dailyForecast[counter].temp.min
+          )}</span> °<span class="degree">C</span>
+        </span>
+      </span>`;
+      counter = counter + 1;
+    });
+  });
+}
+
 // default location is my own city.
 function defaultWeatherInfo() {
   let defaultWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${metric}`;
@@ -82,6 +118,7 @@ function defaultWeatherInfo() {
     minTemp.innerHTML = Math.round(response.data.main.temp_min);
     humidity.innerHTML = response.data.main.humidity;
     windSpeed.innerHTML = response.data.wind.speed;
+    getForecast(response.data.coord);
   });
 }
 
@@ -103,7 +140,7 @@ function retrieveWeatherInfo(event) {
     let minTemp = document.getElementById("min-temp");
     let humidity = document.getElementById("humidity");
     let windSpeed = document.getElementById("wind-speed");
-
+    console.log(response.data);
     setDateTime(response.data.dt);
     icon.setAttribute(
       "src",
@@ -116,6 +153,7 @@ function retrieveWeatherInfo(event) {
     minTemp.innerHTML = Math.round(response.data.main.temp_min);
     humidity.innerHTML = response.data.main.humidity;
     windSpeed.innerHTML = response.data.wind.speed;
+    getForecast(response.data.coord);
   });
 }
 //retrieve live weather
@@ -148,6 +186,7 @@ function showCurrentLocationInfo(event) {
       minTemp.innerHTML = Math.round(response.data.main.temp_min);
       humidity.innerHTML = response.data.main.humidity;
       windSpeed.innerHTML = response.data.wind.speed;
+      getForecast(position.coords);
     });
   });
 }
