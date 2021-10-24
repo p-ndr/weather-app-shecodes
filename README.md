@@ -1,2 +1,3 @@
-# weather-app
- Weather App API, a project for SheCodes Plus Workshops
+# Weather App
+ Weather App API, a project for SheCodes Plus Workshops__
+ Deployed on https://weatherappforshecodesplus.netlify.app/
