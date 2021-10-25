@@ -106,7 +106,6 @@ function defaultWeatherInfo() {
   units = "metric";
   let defaultWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(defaultWeather).then(function (response) {
-    console.log(response.data);
     let icon = document.getElementById("weather-icon");
     let cityElement = document.querySelector(".city-name");
     let cityTemp = document.getElementById("avg-temp");
@@ -149,7 +148,6 @@ function retrieveWeatherInfo(event) {
     let minTemp = document.getElementById("min-temp");
     let humidity = document.getElementById("humidity");
     let windSpeed = document.getElementById("wind-speed");
-    console.log(response.data);
     setDateTime(response.data.dt);
     icon.setAttribute(
       "src",
