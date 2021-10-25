@@ -55,14 +55,20 @@ function setDateTime(timespan) {
 
 // getting the location
 let apiKey = "2405521babf79c19f0fb38e819429c5f";
-let metric = "metric";
+let units = "";
 let city = "Tehran";
 
 //getting the forcast. used inside the functions, not separately.
-function getForecast(coords) {
+function getForecast(coords, units) {
+  let deg = "";
+  if (units === "metric") {
+    deg = "C";
+  } else {
+    deg = "F";
+  }
   let latitude = coords.lat;
   let longitude = coords.lon;
-  let callApiForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=currently,hourly,minutely,alerts&appid=${apiKey}&units=${metric}`;
+  let callApiForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=currently,hourly,minutely,alerts&appid=${apiKey}&units=${units}`;
 
   axios.get(callApiForecast).then(function (response) {
     let forecasts = document.querySelectorAll(".forecast");
@@ -81,13 +87,13 @@ function getForecast(coords) {
         <span class="max">
           <span class="temp">${Math.round(
             dailyForecast[counter].temp.max
-          )}</span> °<span class="degree">C</span>
+          )}</span> °<span class="degree">${deg}</span>
         </span>
         &emsp;
         <span class="min">
           <span class="temp">${Math.round(
             dailyForecast[counter].temp.min
-          )}</span> °<span class="degree">C</span>
+          )}</span> °<span class="degree">${deg}</span>
         </span>
       </span>`;
       counter = counter + 1;
@@ -97,8 +103,10 @@ function getForecast(coords) {
 
 // default location is my own city.
 function defaultWeatherInfo() {
-  let defaultWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${metric}`;
+  units = "metric";
+  let defaultWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(defaultWeather).then(function (response) {
+    console.log(response.data);
     let icon = document.getElementById("weather-icon");
     let cityElement = document.querySelector(".city-name");
     let cityTemp = document.getElementById("avg-temp");
@@ -119,7 +127,7 @@ function defaultWeatherInfo() {
     minTemp.innerHTML = Math.round(response.data.main.temp_min);
     humidity.innerHTML = response.data.main.humidity;
     windSpeed.innerHTML = response.data.wind.speed;
-    getForecast(response.data.coord);
+    getForecast(response.data.coord, units);
   });
 }
 
@@ -131,7 +139,7 @@ function retrieveWeatherInfo(event) {
   event.preventDefault();
   city = document.getElementById("search-bar");
   city = city.value;
-  let weatherAPIMetric = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${metric}`;
+  let weatherAPIMetric = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(weatherAPIMetric).then(function (response) {
     let icon = document.getElementById("weather-icon");
     let currentCity = document.querySelector(".city-name");
@@ -154,7 +162,7 @@ function retrieveWeatherInfo(event) {
     minTemp.innerHTML = Math.round(response.data.main.temp_min);
     humidity.innerHTML = response.data.main.humidity;
     windSpeed.innerHTML = response.data.wind.speed;
-    getForecast(response.data.coord);
+    getForecast(response.data.coord, units);
   });
 }
 //retrieve live weather
@@ -162,10 +170,10 @@ let seek = document.getElementById("weather-form");
 seek.addEventListener("submit", retrieveWeatherInfo);
 
 // retrieves live weather information based on the user's location. A little tipsy.
-function showCurrentLocationInfo(event) {
+function showCurrentLocationInfo(event, units) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(function (position) {
-    let geoLocationAPIMetric = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=${metric}`;
+    let geoLocationAPIMetric = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=${units}`;
     axios.get(geoLocationAPIMetric).then(function (response) {
       let icon = document.getElementById("weather-icon");
       let currentCity = document.querySelector(".city-name");
@@ -187,7 +195,7 @@ function showCurrentLocationInfo(event) {
       minTemp.innerHTML = Math.round(response.data.main.temp_min);
       humidity.innerHTML = response.data.main.humidity;
       windSpeed.innerHTML = response.data.wind.speed;
-      getForecast(position.coords);
+      getForecast(position.coords, units);
     });
   });
 }
@@ -201,6 +209,7 @@ function changeDegreeToCelsius(event) {
   let temps = document.querySelectorAll(".temp");
   let degrees = document.querySelectorAll(".degree");
   if (degrees[0].innerHTML === "F") {
+    units = "metric";
     degrees.forEach((element) => {
       element.innerHTML = "C";
     });
@@ -219,8 +228,8 @@ function changeDegreeToFahrenheit(event) {
   event.preventDefault();
   let temps = document.querySelectorAll(".temp");
   let degrees = document.querySelectorAll(".degree");
-
   if (degrees[0].innerHTML === "C") {
+    units = "imperial";
     degrees.forEach((element) => {
       element.innerHTML = "F";
     });
