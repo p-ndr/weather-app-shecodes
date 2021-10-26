@@ -168,7 +168,7 @@ let seek = document.getElementById("weather-form");
 seek.addEventListener("submit", retrieveWeatherInfo);
 
 // retrieves live weather information based on the user's location. A little tipsy.
-function showCurrentLocationInfo(event, units) {
+function showCurrentLocationInfo(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(function (position) {
     let geoLocationAPIMetric = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=${units}`;
