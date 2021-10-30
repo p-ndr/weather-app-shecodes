@@ -41,12 +41,12 @@ function setDateTime(timespan) {
   day.innerHTML = formatDay(now.getDay());
   month.innerHTML = formatMonth(now.getMonth());
   date.innerHTML = now.getDate();
-  if (minute < 10) {
+  if (now.getMinutes() < 10) {
     minute.innerHTML = `0${now.getMinutes()}`;
   } else {
     minute.innerHTML = now.getMinutes();
   }
-  if (hour < 10) {
+  if (now.getHours() < 10) {
     hour.innerHTML = `0${now.getHours()}`;
   } else {
     hour.innerHTML = now.getHours();
