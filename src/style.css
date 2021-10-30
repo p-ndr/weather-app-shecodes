@@ -30,25 +30,24 @@ form {
 .search-button {
   padding: 12px 24px;
   border-radius: 25px;
-  border: 1px solid #53afff;
+  border: 1px solid #2772db;
   transition: all 200ms ease-in-out;
 }
 .search-button:hover {
   color: #fff;
-  background-color: #53afff;
+  background-color: #2772db;
   cursor: pointer;
 }
 
 .current-location-button {
   padding: 12px 24px;
   border-radius: 25px;
-  border: 1px solid #9de16f;
+  border: 1px solid #91ca62;
   transition: all 200ms ease-in-out;
 }
 .current-location-button:hover {
   color: #fff;
-  background-color: #9de16f;
-  border: 1px solid #9de16f;
+  background-color: #91ca62;
   cursor: pointer;
 }
 
